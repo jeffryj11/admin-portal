@@ -1,32 +1,40 @@
-// ./src/app/page.tsx
-export default function AdminDashboard() {
+// ./src/app/layout.tsx
+import "../globals.css";
+import Link from "next/link";
+
+export const metadata = {
+  title: "Admin Dashboard",
+  description: "Manage rebate applications and system settings",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <main className="min-h-screen bg-slate-100 p-8">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 mb-6">Admin Dashboard</h1>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">User Applications</h2>
-            <p className="text-gray-600 text-sm">View, review, and manage incoming rebate applications.</p>
-          </div>
-
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">Program Controls</h2>
-            <p className="text-gray-600 text-sm">Manage eligibility criteria, funding tiers, and rebate settings.</p>
-          </div>
-
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">Translation Queue</h2>
-            <p className="text-gray-600 text-sm">Upload, review, and approve translations for multilingual access.</p>
-          </div>
-
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-2">System Logs</h2>
-            <p className="text-gray-600 text-sm">Audit trail for admin actions, system alerts, and user events.</p>
-          </div>
-        </div>
-      </div>
-    </main>
+    <html lang="en">
+      <body className="min-h-screen bg-gray-100 text-gray-900">
+        <header className="bg-white shadow-md p-4">
+          <nav className="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 className="text-xl font-bold">Admin Portal</h1>
+            <div className="space-x-4">
+              <Link href="/dashboard" className="text-sm hover:underline">
+                Dashboard
+              </Link>
+              <Link href="/users" className="text-sm hover:underline">
+                User Applications
+              </Link>
+              <Link href="/programs" className="text-sm hover:underline">
+                Program Controls
+              </Link>
+              <Link href="/translations" className="text-sm hover:underline">
+                Translations
+              </Link>
+              <Link href="/logs" className="text-sm hover:underline">
+                System Logs
+              </Link>
+            </div>
+          </nav>
+        </header>
+        <main className="max-w-6xl mx-auto p-6">{children}</main>
+      </body>
+    </html>
   );
 }
