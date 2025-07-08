@@ -1,5 +1,5 @@
 // ./src/app/layout.tsx
-import "../globals.css";
+import "./globals.css";
 import Link from "next/link";
 
 export const metadata = {
