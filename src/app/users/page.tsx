@@ -1,8 +1,10 @@
+import AdminLayout from "@/components/layout/AdminLayout";
+
 export default function UsersPage() {
   return (
-    <main className="p-6">
+    <AdminLayout>
       <h1 className="text-2xl font-bold mb-4">User Applications</h1>
-      <p>This is the main admin view of all user rebate applications.</p>
-    </main>
+      <p className="text-gray-700">This is a placeholder for the user applications table.</p>
+    </AdminLayout>
   );
 }
