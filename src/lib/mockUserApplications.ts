@@ -1,28 +1,22 @@
-import { UserApplication } from "../types";
+import { UserApplication } from '@/types';
 
 export const mockUserApplications: UserApplication[] = [
   {
-    id: "1",
-    firstName: "Jacob",
-    lastName: "Goralski",
-    email: "jacob@example.com",
-    status: "pending",
-    submittedAt: "2025-07-07T10:00:00Z",
+    firstName: 'Alice',
+    lastName: 'Anderson',
+    status: 'Submitted',
+    submittedAt: '2025-07-01',
   },
   {
-    id: "2",
-    firstName: "Tracy",
-    lastName: "Johnson",
-    email: "tracy@example.com",
-    status: "approved",
-    submittedAt: "2025-07-06T14:30:00Z",
+    firstName: 'Bob',
+    lastName: 'Bennett',
+    status: 'Approved',
+    submittedAt: '2025-07-03',
   },
   {
-    id: "3",
-    firstName: "Jeff",
-    lastName: "Johnson",
-    email: "jeff@example.com",
-    status: "rejected",
-    submittedAt: "2025-07-05T08:45:00Z",
+    firstName: 'Carla',
+    lastName: 'Chen',
+    status: 'Rejected',
+    submittedAt: '2025-07-04',
   },
 ];
