@@ -1,13 +1,25 @@
+// src/app/users/page.tsx
+
 'use client';
 
-import AdminLayout from "../../components/layout/AdminLayout";
-import { UserApplication } from "../../types";
-import { mockUserApplications } from "../../lib/mockUserApplications";
+import { UserApplication } from '@/types';
+import { mockUserApplications } from '@/lib/mockUserApplications';
+import AdminLayout from '@/components/layout/AdminLayout';
 
 export default function UsersPage() {
+  const handleApprove = (id: string) => {
+    console.log(`Approved application with ID: ${id}`);
+    // TODO: Replace with actual API call later
+  };
+
+  const handleReject = (id: string) => {
+    console.log(`Rejected application with ID: ${id}`);
+    // TODO: Replace with actual API call later
+  };
+
   return (
     <AdminLayout>
-      <div className="max-w-5xl mx-auto">
+      <div className="p-6 max-w-5xl mx-auto">
         <h1 className="text-3xl font-bold mb-4">User Applications</h1>
 
         <div className="overflow-x-auto border rounded-lg shadow-sm">
@@ -22,30 +34,24 @@ export default function UsersPage() {
               </tr>
             </thead>
             <tbody>
-              {mockUserApplications.map((app: UserApplication, index) => (
-                <tr key={index} className="border-t">
+              {mockUserApplications.map((app: UserApplication) => (
+                <tr key={app.id} className="border-t">
                   <td className="px-4 py-2">{app.firstName}</td>
                   <td className="px-4 py-2">{app.lastName}</td>
                   <td className="px-4 py-2">{app.status}</td>
                   <td className="px-4 py-2">{app.submittedAt}</td>
-                  <td className="px-4 py-2 space-x-2">
+                  <td className="px-4 py-2 space-x-4">
                     <button
                       className="text-green-600 hover:underline"
-                      onClick={() => console.log(`Approved ${app.id}`)}
+                      onClick={() => handleApprove(app.id)}
                     >
                       Approve
                     </button>
                     <button
                       className="text-red-600 hover:underline"
-                      onClick={() => console.log(`Rejected ${app.id}`)}
+                      onClick={() => handleReject(app.id)}
                     >
                       Reject
-                    </button>
-                    <button
-                      className="text-yellow-600 hover:underline"
-                      onClick={() => console.log(`Flagged ${app.id}`)}
-                    >
-                      Flag
                     </button>
                   </td>
                 </tr>
