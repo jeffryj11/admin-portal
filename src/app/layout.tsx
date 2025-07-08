@@ -25,11 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <header className="flex items-center justify-between px-6 py-4 shadow bg-white">
-          <div className="font-bold text-lg">Admin Portal</div>
-          <div className="text-sm text-gray-600">Welcome Jacob</div>
-        </header>
-        <main className="p-6">{children}</main>
+        {children}
       </body>
     </html>
   );
