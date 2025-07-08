@@ -1,6 +1,7 @@
 // src/app/users/page.tsx
-import { UserApplication } from '@/types';
-import { mockUserApplications } from '@/lib/mockUserApplications';
+
+import { UserApplication } from '../../types';
+import { mockUserApplications } from '../../lib/mockUserApplications';
 
 export default function UsersPage() {
   return (
