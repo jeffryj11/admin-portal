@@ -28,7 +28,6 @@ export default function AdminLayout({
         {/* Top bar */}
         <header className="bg-white shadow px-4 py-3 flex items-center justify-between">
           <span className="text-sm font-medium">Admin Portal</span>
-          {/* Removed: <span className="text-sm text-gray-500">Welcome Jacob</span> */}
         </header>
 
         {/* Page content */}
