@@ -58,42 +58,43 @@ export default function ProgramPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {programs.map((program) => (
-          <Card key={program.id} className="bg-white text-black">
-            <CardHeader>
-              <CardTitle className="flex items-center justify-between">
-                {program.name}
-                <span
-                  className={\`text-sm px-2 py-1 rounded-full font-semibold \${program.status === 'Active'
-                    ? 'bg-green-600 text-white'
-                    : program.status === 'Draft'
-                    ? 'bg-yellow-600 text-white'
-                    : 'bg-gray-600 text-white'}\`}
-                >
-                  {program.status}
-                </span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-sm text-gray-700">{program.description}</p>
-              <div className="flex gap-2">
-                <Button variant="secondary" size="sm" asChild>
-                  <Link href={`/programs/${program.id}`}>
-                    <Eye className="h-4 w-4 mr-1" /> View
-                  </Link>
-                </Button>
-                <Button variant="outline" size="sm" asChild>
-                  <Link href={`/programs/${program.id}/edit`}>
-                    <Pencil className="h-4 w-4 mr-1" /> Edit
-                  </Link>
-                </Button>
-                <Button variant="destructive" size="sm" onClick={() => handleDelete(program.id)}>
-                  <Trash2 className="h-4 w-4 mr-1" /> Delete
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+        {programs.map((program) => {
+          let badgeClass = 'text-sm px-2 py-1 rounded-full font-semibold ';
+          if (program.status === 'Active') badgeClass += 'bg-green-600 text-white';
+          else if (program.status === 'Draft') badgeClass += 'bg-yellow-600 text-white';
+          else badgeClass += 'bg-gray-600 text-white';
+
+          return (
+            <Card key={program.id} className="bg-white text-black">
+              <CardHeader>
+                <CardTitle className="flex items-center justify-between">
+                  {program.name}
+                  <span className={badgeClass}>
+                    {program.status}
+                  </span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-sm text-gray-700">{program.description}</p>
+                <div className="flex gap-2">
+                  <Button variant="secondary" size="sm" asChild>
+                    <Link href={`/programs/${program.id}`}>
+                      <Eye className="h-4 w-4 mr-1" /> View
+                    </Link>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <Link href={`/programs/${program.id}/edit`}>
+                      <Pencil className="h-4 w-4 mr-1" /> Edit
+                    </Link>
+                  </Button>
+                  <Button variant="destructive" size="sm" onClick={() => handleDelete(program.id)}>
+                    <Trash2 className="h-4 w-4 mr-1" /> Delete
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
     </div>
   );
