@@ -1,0 +1,1 @@
+// Applications admin page placeholder
