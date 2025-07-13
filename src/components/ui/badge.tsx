@@ -1,18 +1,18 @@
+import * as React from 'react';
 import { cn } from '@/lib/utils';
 
-interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-  variant?: 'approved' | 'pending' | 'rejected';
-}
+export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export function Badge({ className, variant = 'pending', ...props }: BadgeProps) {
-  const base = 'inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold';
-  const variants = {
-    approved: 'bg-green-600 text-white',
-    pending: 'bg-yellow-500 text-black',
-    rejected: 'bg-red-600 text-white'
-  };
-
-  return (
-    <span className={cn(base, variants[variant], className)} {...props} />
-  );
-}
+const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
+  ({ className, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cn('inline-block rounded-full px-2 py-1 text-xs font-semibold bg-gray-200 text-gray-800', className)}
+        {...props}
+      />
+    );
+  }
+);
+Badge.displayName = 'Badge';
+export { Badge };
