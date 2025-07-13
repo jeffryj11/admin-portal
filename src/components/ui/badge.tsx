@@ -1,18 +1,27 @@
-import * as React from 'react';
-import { cn } from '@/lib/utils';
+import React from 'react';
+import clsx from 'clsx';
 
-export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
+  status?: 'pending' | 'approved' | 'rejected';
+}
 
-const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
-  ({ className, ...props }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={cn('inline-block rounded-full px-2 py-1 text-xs font-semibold bg-gray-200 text-gray-800', className)}
-        {...props}
-      />
-    );
-  }
-);
-Badge.displayName = 'Badge';
-export { Badge };
+export function Badge({ status, className, children, ...props }: BadgeProps) {
+  const colorMap = {
+    pending: 'bg-yellow-100 text-yellow-800',
+    approved: 'bg-green-100 text-green-800',
+    rejected: 'bg-red-100 text-red-800',
+  };
+
+  return (
+    <div
+      className={clsx(
+        'inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full',
+        colorMap[status ?? 'pending'],
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
