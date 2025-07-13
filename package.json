@@ -10,6 +10,7 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@supabase/supabase-js": "^2.50.5",
     "autoprefixer": "^10.0.0",
+    "clsx": "^2.1.1",
     "lucide-react": "^0.525.0",
     "next": "latest",
     "postcss": "^8.0.0",
