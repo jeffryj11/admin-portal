@@ -1,3 +1,2 @@
 # Admin Portal
-
-This is the admin dashboard for managing applications and users.
+This is the complete admin portal project.
