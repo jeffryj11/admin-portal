@@ -1,27 +1,30 @@
-import React from 'react';
-import clsx from 'clsx';
+import * as React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '@/lib/utils';
 
-export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
-  status?: 'pending' | 'approved' | 'rejected';
+const badgeVariants = cva(
+  'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
+  {
+    variants: {
+      variant: {
+        default: 'bg-primary text-primary-foreground',
+        secondary: 'bg-secondary text-secondary-foreground',
+        destructive: 'bg-destructive text-destructive-foreground',
+        approved: 'bg-green-500 text-white',
+        rejected: 'bg-red-500 text-white',
+        pending: 'bg-yellow-500 text-white',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  }
+);
+
+export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof badgeVariants> {}
+
+function Badge({ className, variant, ...props }: BadgeProps) {
+  return <div className={cn(badgeVariants({ variant }), className)} {...props} />;
 }
 
-export function Badge({ status, className, children, ...props }: BadgeProps) {
-  const colorMap = {
-    pending: 'bg-yellow-100 text-yellow-800',
-    approved: 'bg-green-100 text-green-800',
-    rejected: 'bg-red-100 text-red-800',
-  };
-
-  return (
-    <div
-      className={clsx(
-        'inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full',
-        colorMap[status ?? 'pending'],
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-}
+export { Badge, badgeVariants };
