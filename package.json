@@ -1,0 +1,1 @@
+{ "name": "admin-portal", "dependencies": { "next": "latest", "react": "latest", "tailwindcss": "^3.0.0" } }
