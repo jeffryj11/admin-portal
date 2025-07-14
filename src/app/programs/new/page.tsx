@@ -1,7 +1,5 @@
-// File: app/programs/new/page.tsx
 
 'use client';
-
 export const dynamic = 'force-dynamic';
 
 import { useState } from 'react';
@@ -12,7 +10,6 @@ import Link from 'next/link';
 
 export default function NewProgramPage() {
   const router = useRouter();
-
   const [name, setName] = useState('');
   const [status, setStatus] = useState<'Active' | 'Draft' | 'Archived'>('Draft');
   const [description, setDescription] = useState('');
@@ -38,7 +35,6 @@ export default function NewProgramPage() {
   return (
     <div className="p-6 max-w-xl mx-auto">
       <h1 className="text-2xl font-bold mb-4">Add New Program</h1>
-
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-sm font-medium mb-1">Name</label>
