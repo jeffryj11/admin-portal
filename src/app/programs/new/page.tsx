@@ -1,9 +1,7 @@
 'use client';
-export const dynamic = 'force-dynamic';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
@@ -19,7 +17,9 @@ export default function NewProgramPage() {
     e.preventDefault();
     setLoading(true);
 
-    const { error } = await supabase?.from('programs').insert([
+    const { supabase } = await import('@/lib/supabase');
+
+    const { error } = await supabase.from('programs').insert([
       { name, status, description }
     ]);
 
