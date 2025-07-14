@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional custom styles below */
 body {
   @apply bg-background text-foreground;
 }
