@@ -1,4 +1,3 @@
-
 'use client';
 export const dynamic = 'force-dynamic';
 
@@ -20,7 +19,7 @@ export default function NewProgramPage() {
     e.preventDefault();
     setLoading(true);
 
-    const { error } = await supabase.from('programs').insert([
+    const { error } = await supabase?.from('programs').insert([
       { name, status, description }
     ]);
 
