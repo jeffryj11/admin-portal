@@ -1,57 +1,67 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Menu, X } from 'lucide-react';
 
 const navItems = [
-  { label: "Dashboard", href: "/" },
-  { label: "User Applications", href: "/users" },
-  { label: "Settings", href: "/settings" },
+  { label: 'Dashboard', href: '/' },
+  { label: 'User Applications', href: '/users' },
+  { label: 'Settings', href: '/settings' },
 ];
 
-export default function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex bg-gray-100 text-gray-900">
+    <div className="flex min-h-screen bg-muted text-foreground">
       {/* Sidebar */}
-      <aside className="w-64 bg-white shadow-lg p-4 hidden md:block">
-        <h2 className="text-xl font-bold mb-6">Admin Menu</h2>
-        <nav className="space-y-2">
+      <aside className={`bg-white shadow-md w-64 fixed top-0 left-0 h-full z-30 transform transition-transform duration-200 ease-in-out
+        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
+        <div className="p-6 border-b border-border flex items-center justify-between md:justify-start">
+          <h2 className="text-xl font-bold text-primary">Admin Menu</h2>
+          <button
+            className="md:hidden text-gray-500"
+            onClick={() => setSidebarOpen(false)}
+          >
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+        <nav className="p-4 space-y-2">
           {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`block text-sm py-1 px-2 rounded transition ${
-                pathname === item.href
-                  ? "bg-green-100 text-green-700 font-medium"
-                  : "hover:text-green-600"
-              }`}
-            >
-              {item.label}
+            <Link key={item.href} href={item.href}>
+              <div
+                className={`block px-4 py-2 rounded-lg text-sm font-medium transition cursor-pointer
+                  ${pathname === item.href
+                    ? 'bg-primary text-white'
+                    : 'text-gray-700 hover:bg-gray-100'}`}
+              >
+                {item.label}
+              </div>
             </Link>
           ))}
         </nav>
       </aside>
 
-      {/* Content Area */}
-      <div className="flex-1 flex flex-col">
-        {/* Top Nav Bar */}
-        <header className="bg-white shadow px-6 py-4 flex items-center justify-between">
-          <h1 className="text-lg font-semibold">Texas Home Energy Rebates</h1>
-          {/* Placeholder for future search / user dropdown */}
-          <span className="text-sm text-gray-500 hidden md:block">
-            Admin Panel
-          </span>
+      {/* Mobile sidebar toggle */}
+      <button
+        className="md:hidden fixed top-4 left-4 z-40 p-2 bg-white border border-border rounded-md shadow"
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+      >
+        <Menu className="h-5 w-5 text-gray-700" />
+      </button>
+
+      {/* Main Content Area */}
+      <div className="flex-1 md:ml-64 w-full">
+        {/* Top Nav */}
+        <header className="bg-white px-6 py-4 shadow border-b border-border flex items-center justify-between">
+          <h1 className="text-lg font-semibold text-primary">
+            Texas Home Energy Rebates
+          </h1>
+          <span className="text-sm text-gray-500 hidden md:block">Admin Panel</span>
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 p-6">{children}</main>
-      </div>
-    </div>
-  );
-}
+        <main className="p-6">{child
