@@ -18,8 +18,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   return (
     <div className="flex min-h-screen bg-muted text-foreground">
       {/* Sidebar */}
-      <aside className={`bg-white shadow-md w-64 fixed top-0 left-0 h-full z-30 transform transition-transform duration-200 ease-in-out
-        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
+      <aside
+        className={`bg-white shadow-md w-64 fixed top-0 left-0 h-full z-30 transform transition-transform duration-200 ease-in-out
+        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
+      >
         <div className="p-6 border-b border-border flex items-center justify-between md:justify-start">
           <h2 className="text-xl font-bold text-primary">Admin Menu</h2>
           <button
@@ -53,4 +55,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <Menu className="h-5 w-5 text-gray-700" />
       </button>
 
-      {/* Main Content*
+      {/* Main Content Area */}
+      <div className="flex-1 md:ml-64 w-full">
+        {/* Top Nav */}
+        <header className="bg-white px-6 py-4 shadow border-b border-border flex items-center justify-between">
+          <h1 className="text-lg font-semibold text-primary">
+            Texas Home Energy Rebates
+          </h1>
+          <span className="text-sm text-gray-500 hidden md:block">Admin Panel</span>
+        </header>
+
+        {/* Page Content */}
+        <main className="p-6">{children}</main>
+      </div>
+    </div>
+  );
+}
