@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Optional custom CSS vars */
 :root {
   --background: #f8fafc;
   --foreground: #171717;
@@ -14,8 +15,12 @@
   }
 }
 
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: theme('fontFamily.sans'); /* optional fallback */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-muted text-foreground font-sans antialiased;
+  }
 }

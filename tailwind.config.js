@@ -1,7 +1,11 @@
 // tailwind.config.js
 module.exports = {
+  darkMode: 'class', // <-- 👈 REQUIRED for class-based dark mode
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -11,12 +15,12 @@ module.exports = {
           light: "#a5b4fc",
           dark: "#3730a3",
         },
-        accent: "#22c55e", // Emerald 500
-        muted: "#f1f5f9",  // Slate 100
-        foreground: "#1e293b", // Slate 800
+        accent: "#22c55e",      // Emerald 500
+        muted: "#f1f5f9",       // Slate 100
+        foreground: "#1e293b",  // Slate 800
         background: "#ffffff",
-        border: "#e2e8f0", // Slate 200
-        error: "#ef4444",   // Red 500
+        border: "#e2e8f0",      // Slate 200
+        error: "#ef4444",       // Red 500
       },
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui"],
@@ -28,4 +32,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
