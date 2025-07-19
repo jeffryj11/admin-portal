@@ -2,17 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional custom CSS vars */
 :root {
-  --background: #f8fafc;
-  --foreground: #171717;
+  --background: #ffffff;
+  --foreground: #1e293b;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #0a0a0a;
+  --foreground: #f1f5f9;
 }
 
 @layer base {
@@ -21,6 +18,8 @@
   }
 
   body {
-    @apply bg-muted text-foreground font-sans antialiased;
+    @apply font-sans antialiased;
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }
