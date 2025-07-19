@@ -53,15 +53,4 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <Menu className="h-5 w-5 text-gray-700" />
       </button>
 
-      {/* Main Content Area */}
-      <div className="flex-1 md:ml-64 w-full">
-        {/* Top Nav */}
-        <header className="bg-white px-6 py-4 shadow border-b border-border flex items-center justify-between">
-          <h1 className="text-lg font-semibold text-primary">
-            Texas Home Energy Rebates
-          </h1>
-          <span className="text-sm text-gray-500 hidden md:block">Admin Panel</span>
-        </header>
-
-        {/* Page Content */}
-        <main className="p-6">{child
+      {/* Main Content*
